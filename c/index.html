@@ -31,31 +31,32 @@
         .links {
             display: inline-flex;
             align-items: center;
-            gap: 5px; /* Minimal space between items */
+            gap: 20px; /* Space between icons */
         }
 
-        .link {
-            text-decoration: none;
-            color: blue; /* Original blue color */
-            font-size: 24px; /* Font size */
+        .link-icon {
+            width: auto; /* Adjust the size as needed */
+            height: 25px;
+            transition: transform 0.2s;
         }
 
-        .link:visited {
-            color: blue; /* Original purple color after visiting */
-        }
-
-        .separator {
-            color: black; /* Keeps the period black */
-            font-size: 24px; /* Match font size with links */
+        .link-icon:hover {
+            transform: scale(1.1); /* Slight zoom effect on hover */
         }
     </style>
 </head>
 <body>
     <div class="full-bleed-background">
         <div class="links">
-            <a href="https://instagram.com/rankandfile.cc" class="link" target="_blank">Instagram.</a>
-            <a href="https://soundcloud.com/rankandfile" class="link" target="_blank">Soundcloud.</a>
-            <a href="https://rankandfile.bandcamp.com" class="link" target="_blank">Bandcamp.</a>
+            <a href="https://instagram.com/rankandfile.cc" target="_blank">
+                <img src="../media/instagram-icon.png" alt="Instagram" class="link-icon">
+            </a>
+            <a href="https://soundcloud.com/rankandfile" target="_blank">
+                <img src="../media/soundcloud-icon.png" alt="Soundcloud" class="link-icon">
+            </a>
+            <a href="https://rankandfile.bandcamp.com" target="_blank">
+                <img src="../media/bandcamp-icon.png" alt="Bandcamp" class="link-icon">
+            </a>
         </div>
     </div>
 </body>
