@@ -14,7 +14,6 @@
             align-items: center;
             overflow: hidden; /* Prevents scrolling */
             font-family: "Times New Roman", Times, serif;
-            background-color: black; /* Set a background color for blending */
         }
 
         .full-bleed-background {
@@ -32,19 +31,22 @@
         .links {
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 5px; /* Minimal space between items */
         }
 
         .link {
             text-decoration: none;
-            color: white;
-            font-size: 24px;
-            mix-blend-mode: difference;
+            color: blue; /* Original blue color */
+            font-size: 24px; /* Font size */
         }
 
         .link:visited {
-            color: black;
-            mix-blend-mode: difference;
+            color: purple; /* Original purple color after visiting */
+        }
+
+        .separator {
+            color: black; /* Keeps the period black */
+            font-size: 24px; /* Match font size with links */
         }
     </style>
 </head>
