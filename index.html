@@ -16,43 +16,16 @@
         }
 
         .full-bleed-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
             background-image: url('raf6.jpg'); /* Replace with your image path */
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
-            z-index: -1; /* Place the background behind the icon */
-        }
-
-        .clickable-icon {
             cursor: pointer;
-            transition: mix-blend-mode 0.2s; /* Smooth transition for the blend mode */
-        }
-
-        .clickable-icon:hover {
-            mix-blend-mode: difference; /* Apply the difference blend mode on hover */
-        }
-
-        /* Responsive centering */
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 100%;
         }
     </style>
 </head>
 <body>
-    <div class="full-bleed-image"></div>
-    <div class="container">
-        <a href="c">
-            <img src="media/logo-icon.png" alt="Clickable Icon" class="clickable-icon">
-        </a>
-    </div>
+    <div class="full-bleed-image" onclick="location.href='c'"></div>
 </body>
 </html>
