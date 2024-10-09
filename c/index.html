@@ -29,17 +29,35 @@
         }
 
         .links {
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            gap: 20px; /* Space between icons */
-      
+            justify-content: space-between;
+            width: auto;
+        }
+
+        .link-wrapper {
+            margin: 0 10px; /* Consistent horizontal spacing for all browsers */
+        }
+
+        .link-icon {
+            width: auto;
+            height: 25px;
+            transition: mix-blend-mode 0.2s; /* Smooth transition for the blend mode */
+        }
+
+        .link-icon:hover {
+            mix-blend-mode: difference; /* Apply the difference blend mode on hover */
         }
 
         /* Media query for mobile devices */
         @media (max-width: 768px) {
             .links {
                 flex-direction: column; /* Stack icons vertically */
-                gap: 20px; /* Maintain the same space between icons as on desktop */
+                align-items: center; /* Center the icons */
+            }
+
+            .link-wrapper {
+                margin: 10px 0; /* Maintain consistent vertical spacing for mobile */
             }
         }
     </style>
@@ -47,15 +65,21 @@
 <body>
     <div class="full-bleed-background">
         <div class="links">
-            <a href="https://instagram.com/rankandfile.cc" target="_blank">
-                <img src="../media/instagram-icon.png" alt="Instagram" class="link-icon">
-            </a>
-            <a href="https://soundcloud.com/rankandfile" target="_blank">
-                <img src="../media/soundcloud-icon.png" alt="Soundcloud" class="link-icon">
-            </a>
-            <a href="https://rankandfile.bandcamp.com" target="_blank">
-                <img src="../media/bandcamp-icon.png" alt="Bandcamp" class="link-icon">
-            </a>
+            <div class="link-wrapper">
+                <a href="https://instagram.com/rankandfile.cc" target="_blank">
+                    <img src="../media/instagram-icon.png" alt="Instagram" class="link-icon">
+                </a>
+            </div>
+            <div class="link-wrapper">
+                <a href="https://soundcloud.com/rankandfile" target="_blank">
+                    <img src="../media/soundcloud-icon.png" alt="Soundcloud" class="link-icon">
+                </a>
+            </div>
+            <div class="link-wrapper">
+                <a href="https://rankandfile.bandcamp.com" target="_blank">
+                    <img src="../media/bandcamp-icon.png" alt="Bandcamp" class="link-icon">
+                </a>
+            </div>
         </div>
     </div>
 </body>
