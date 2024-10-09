@@ -10,7 +10,6 @@
             padding: 0;
             height: 100%;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             overflow: hidden; /* Prevents scrolling */
@@ -27,14 +26,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
         }
 
         .links {
             display: inline-flex;
             align-items: center;
             gap: 20px; /* Space between icons */
-            margin-bottom: 20px; /* Space between links and player */
         }
 
         .link-icon {
@@ -47,9 +44,12 @@
             transform: scale(1.1); /* Slight zoom effect on hover */
         }
 
-        .player-container {
-            width: 100%;
-            max-width: 500px; /* Adjust the max width as needed */
+        /* Media query for mobile devices */
+        @media (max-width: 768px) {
+            .links {
+                flex-direction: column; /* Stack icons vertically */
+                gap: 20px; /* Maintain the same space between icons as on desktop */
+            }
         }
     </style>
 </head>
@@ -65,12 +65,6 @@
             <a href="https://rankandfile.bandcamp.com" target="_blank">
                 <img src="../media/bandcamp-icon.png" alt="Bandcamp" class="link-icon">
             </a>
-        </div>
-        <!-- SoundCloud Embed Player -->
-        <div class="player-container">
-            <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/your-track-id&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
-            </iframe>
         </div>
     </div>
 </body>
