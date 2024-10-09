@@ -10,28 +10,31 @@
             padding: 0;
             height: 100%;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
             overflow: hidden; /* Prevents scrolling */
             font-family: "Times New Roman", Times, serif;
         }
 
         .full-bleed-background {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100vw;
             height: 100vh;
             background-image: url('../media/raf5.jpg'); /* Replace with your image path */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            z-index: -1; /* Place the background behind other elements */
         }
 
         .links {
             display: inline-flex;
             align-items: center;
             gap: 20px; /* Space between icons */
+            margin-top: 20px;
         }
 
         .link-icon {
@@ -44,28 +47,32 @@
             transform: scale(1.1); /* Slight zoom effect on hover */
         }
 
-        /* Media query for mobile devices */
-        @media (max-width: 768px) {
-            .links {
-                flex-direction: column; /* Stack icons vertically */
-                gap: 20px; /* Maintain the same space between icons as on desktop */
-            }
+        .player-container {
+            width: 100%;
+            max-width: 500px; /* Adjust the max width as needed */
+            margin-bottom: 20px; /* Space from the bottom of the page */
         }
     </style>
 </head>
 <body>
-    <div class="full-bleed-background">
-        <div class="links">
-            <a href="https://instagram.com/rankandfile.cc" target="_blank">
-                <img src="../media/instagram-icon.png" alt="Instagram" class="link-icon">
-            </a>
-            <a href="https://soundcloud.com/rankandfile" target="_blank">
-                <img src="../media/soundcloud-icon.png" alt="Soundcloud" class="link-icon">
-            </a>
-            <a href="https://rankandfile.bandcamp.com" target="_blank">
-                <img src="../media/bandcamp-icon.png" alt="Bandcamp" class="link-icon">
-            </a>
-        </div>
+    <div class="full-bleed-background"></div>
+    <div class="links">
+        <a href="https://instagram.com/rankandfile.cc" target="_blank">
+            <img src="../media/instagram-icon.png" alt="Instagram" class="link-icon">
+        </a>
+        <a href="https://soundcloud.com/rankandfile" target="_blank">
+            <img src="../media/soundcloud-icon.png" alt="Soundcloud" class="link-icon">
+        </a>
+        <a href="https://rankandfile.bandcamp.com" target="_blank">
+            <img src="../media/bandcamp-icon.png" alt="Bandcamp" class="link-icon">
+        </a>
+    </div>
+    <!-- Audio Player at the bottom -->
+    <div class="player-container">
+        <audio controls>
+            <source src="../media/03 Pinastri.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
     </div>
 </body>
 </html>
