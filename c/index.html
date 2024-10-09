@@ -14,6 +14,7 @@
             align-items: center;
             overflow: hidden; /* Prevents scrolling */
             font-family: "Times New Roman", Times, serif;
+            background-color: black; /* Set a background color for blending */
         }
 
         .full-bleed-background {
@@ -36,12 +37,14 @@
 
         .link {
             text-decoration: none;
-            color: blue; /* Original blue color */
+            color: white; /* Set initial color */
             font-size: 24px; /* Font size */
+            mix-blend-mode: difference; /* Apply blending mode */
         }
 
         .link:visited {
-            color: purple; /* Original purple color after visiting */
+            color: white; /* Keeps the link color consistent after visiting */
+            mix-blend-mode: difference; /* Apply blending mode */
         }
 
         .separator {
