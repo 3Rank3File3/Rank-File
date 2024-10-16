@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rank+File</title>
     
+    <!-- Favicon Setup -->
     <script>
         var link = document.createElement('link');
         link.rel = 'icon';
@@ -36,16 +37,47 @@
         }
 
         .grayscale {
-            filter: grayscale(100%); /* Apply grayscale */
+            filter: grayscale(100%);
         }
     </style>
+
     <script>
-        // Apply grayscale class after 1 second
-        window.onload = function() {
+        function applyGrayscaleEffect() {
             setTimeout(function() {
                 document.querySelector('.full-bleed-image').classList.add('grayscale');
-            }, 1000);
-        };
+            }, 1000); // Delay of 1 second
+        }
+
+        // Apply grayscale on page load
+        window.onload = applyGrayscaleEffect;
+
+        // Listen for visibility change (when switching tabs)
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                // Reset the grayscale effect when the user comes back to the tab
+                document.querySelector('.full-bleed-image').classList.remove('grayscale');
+                applyGrayscaleEffect(); // Reapply the effect
+            }
+        });
+
+        // Idle timeout setup
+        let idleTimeout;
+
+        function resetIdleTimer() {
+            clearTimeout(idleTimeout); // Clear any existing idle timer
+            idleTimeout = setTimeout(function() {
+                // Reset grayscale if idle for 5 minutes (300000 ms)
+                document.querySelector('.full-bleed-image').classList.remove('grayscale');
+                applyGrayscaleEffect(); // Reapply the effect
+            }, 300000); // 5 minutes of idle time
+        }
+
+        // Listen for user interaction to reset the idle timer
+        document.addEventListener('mousemove', resetIdleTimer);
+        document.addEventListener('keydown', resetIdleTimer);
+
+        // Initialize the idle timer
+        resetIdleTimer();
     </script>
 </head>
 <body>
