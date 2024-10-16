@@ -37,7 +37,7 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            transition: filter 6s ease; /* Slow initial transition for grayscale effect */
+            transition: filter 6s ease; /* Slower initial transition for grayscale effect */
         }
 
         .grayscale {
@@ -90,6 +90,12 @@
 
         .contact-icon:hover {
             filter: invert(1);
+        }
+
+        /* Prevent background effect from being applied to links */
+        .full-bleed-background .link-wrapper:hover,
+        .full-bleed-background .contact-button-wrapper:hover {
+            filter: none; /* Ensure no grayscale effect applies to buttons */
         }
 
         @media (max-width: 768px) {
