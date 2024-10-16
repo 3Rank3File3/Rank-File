@@ -37,26 +37,22 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-image: url('../media/raf7.jpg'); /* Replace with your image path */
+            background-image: url('../media/raf1.jpg'); /* Replace with your image path */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            z-index: -1; /* Background behind the form */
+            z-index: -1;
             transition: filter 3s ease; /* Smooth transition for grayscale effect */
         }
 
         .grayscale {
             filter: grayscale(100%);
-            transition: filter 1.5s ease; /* Smooth reversion to grayscale */
-        }
-
-        .initial-color {
-            filter: grayscale(0); /* Start in color */
+            transition: filter 1s ease;
         }
 
         .color {
             filter: grayscale(0);
-            transition: filter 0.5s ease; /* Faster transition back to color for mobile */
+            transition: filter 0.5s ease; /* Faster return to color for mobile */
         }
 
         .contact-form {
@@ -65,14 +61,14 @@
             gap: 15px;
             width: 100%;
             max-width: 500px;
-            padding: 0 10px; /* Ensure the form is centered and spaced */
+            padding: 0 10px;
         }
 
         .form-group input, .form-group textarea, .form-group button {
             width: 100%;
             padding: 15px;
             font-size: 16px;
-            border: 2px solid black; /* 2px black border */
+            border: 2px solid black;
             border-radius: 0px;
             background-color: transparent;
             color: black;
@@ -83,11 +79,11 @@
 
         .form-group input::placeholder, .form-group textarea::placeholder {
             color: black;
-            opacity: 1; /* Ensure visibility of placeholder */
+            opacity: 1;
         }
 
         .form-group input:focus, .form-group textarea:focus, .form-group button:focus {
-            border-color: #333; /* Darker border on focus */
+            border-color: #333;
         }
 
         .form-group textarea {
@@ -105,13 +101,6 @@
             background-color: rgba(255, 255, 255, 0.1);
         }
 
-        /* Fix for Safari spacing issues */
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px; /* Increase gap slightly to ensure consistent spacing */
-        }
-
         @media (max-width: 768px) {
             .contact-form {
                 padding: 0 15px;
@@ -122,27 +111,20 @@
     <script>
         function applyGrayscaleEffect() {
             setTimeout(function() {
-                document.querySelector('.full-bleed-background').classList.remove('initial-color');
                 document.querySelector('.full-bleed-background').classList.add('grayscale');
-            }, 2000); // Delay of 2 seconds for the initial grayscale effect
+            }, 2000); // Delay of 1 second for the initial grayscale effect
         }
 
-        // Apply grayscale after delay on page load
-        window.onload = function() {
-            document.querySelector('.full-bleed-background').classList.add('initial-color');
-            applyGrayscaleEffect();
-        };
+        // Apply grayscale on page load
+        window.onload = applyGrayscaleEffect;
 
-        // Detect when the mouse leaves the window or element and revert to color (including for Safari)
-        document.addEventListener('mouseleave', revertToColor);
-        document.addEventListener('mouseout', revertToColor); // Additional support for Safari
-
-        function revertToColor() {
+        // Detect when the mouse leaves the window and revert to color
+        document.addEventListener('mouseleave', function() {
             document.querySelector('.full-bleed-background').classList.remove('grayscale');
-            document.querySelector('.full-bleed-background').classList.add('color'); // Reapply color when mouse leaves
-        }
+            document.querySelector('.full-bleed-background').classList.add('color');
+        });
 
-        // Reapply grayscale effect when the mouse re-enters the window or element
+        // Reapply grayscale effect when the mouse re-enters the window
         document.addEventListener('mouseenter', function() {
             document.querySelector('.full-bleed-background').classList.remove('color');
             setTimeout(function() {
@@ -161,7 +143,7 @@
             document.querySelector('.full-bleed-background').classList.remove('color');
             setTimeout(function() {
                 document.querySelector('.full-bleed-background').classList.add('grayscale');
-            }, 500);
+            }, 500); // Quick transition back to grayscale after touch ends
         });
     </script>
 </head>
