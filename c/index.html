@@ -42,7 +42,7 @@
 
         .grayscale {
             filter: grayscale(100%);
-            transition: filter 1s ease;
+            transition: filter .5s ease;
         }
 
         .color {
@@ -104,7 +104,7 @@
         function applyGrayscaleEffect() {
             setTimeout(function() {
                 document.querySelector('.full-bleed-background').classList.add('grayscale');
-            }, 1000); // Delay of 1 second for the initial grayscale effect
+            }, 2000); // Delay of 1 second for the initial grayscale effect
         }
 
         // Apply grayscale on page load
