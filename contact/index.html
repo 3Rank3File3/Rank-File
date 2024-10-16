@@ -41,10 +41,13 @@
         .contact-form {
             display: flex;
             flex-direction: column;
-            gap: 15px;
             width: 100%;
             max-width: 500px;
             padding: 0 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px; /* Add consistent margin to fix Safari spacing issue */
         }
 
         .form-group input, .form-group textarea, .form-group button {
