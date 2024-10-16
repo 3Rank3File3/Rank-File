@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+    <title>Contact</title>
     <style>
         body, html {
             margin: 0;
@@ -41,59 +41,6 @@
             font-size: 16px;
             border: 1px solid black; /* Thinner black border */
             border-radius: 0px; /* Square edges */
-            background-color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-            outline: none;
-            transition: border-color 0.3s, background-color 0.3s;
-        }
-
-        .form-group input::placeholder, .form-group textarea::placeholder {
-            color: #aaa;
-        }
-
-        .form-group input:focus, .form-group textarea:focus, .form-group button:focus {
-            border-color: #333; /* Darker border on focus */
-        }
-
-        .form-group textarea {
-            height: 150px;
-            resize: none;
-        }
-
-        .form-group button {
-            background-color: #333;
-            color: white;
-            cursor: pointer;
-        }
-
-        .form-group button:hover {
-            background-color: #555;
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .contact-form {
-                padding: 10px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="full-bleed-background"></div>
-
-    <form action="https://formspree.io/f/mzzbbjey" method="POST" class="contact-form">
-        <div class="form-group">
-            <input type="text" name="name" placeholder="Your Name" required>
-        </div>
-        <div class="form-group">
-            <input type="email" name="email" placeholder="Your Email" required>
-        </div>
-        <div class="form-group">
-            <textarea name="message" placeholder="Your Message" required></textarea>
-        </div>
-        <div class="form-group">
-            <button type="submit">Send Message</button>
-        </div>
-    </form>
-</body>
-</html>
+            background-color: white; /* White background */
+            color: black; /* Black text */
+          
