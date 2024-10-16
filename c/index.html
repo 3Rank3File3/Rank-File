@@ -9,7 +9,7 @@
     <script>
         var link = document.createElement('link');
         link.rel = 'icon';
-        link.href = 'media/favicon.png'; // Path to your PNG favicon file
+        link.href = '../media/favicon.png'; // Path to your PNG favicon file
         link.type = 'image/png'; // Specify the type for PNG
         document.getElementsByTagName('head')[0].appendChild(link);
     </script>
@@ -37,17 +37,21 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            transition: filter 3s ease; /* Slow initial transition for grayscale effect */
+            transition: filter 6s ease; /* Slow initial transition for grayscale effect */
         }
 
         .grayscale {
             filter: grayscale(100%);
-            transition: filter 0.5s ease;
+            transition: filter 1.5s ease; /* Smooth reversion to grayscale */
+        }
+
+        .initial-color {
+            filter: grayscale(0); /* Start in color */
         }
 
         .color {
-            filter: grayscale(0);
-            transition: filter 0.5s ease; /* Faster return to color for mobile */
+            filter: grayscale(0); /* Fully revert to color */
+            transition: filter 0.5s ease; /* Faster transition back to color for mobile */
         }
 
         .links {
@@ -103,20 +107,27 @@
     <script>
         function applyGrayscaleEffect() {
             setTimeout(function() {
+                document.querySelector('.full-bleed-background').classList.remove('initial-color');
                 document.querySelector('.full-bleed-background').classList.add('grayscale');
-            }, 2000); // Delay of 1 second for the initial grayscale effect
+            }, 2000); // Delay of 2 seconds for the initial grayscale effect
         }
 
-        // Apply grayscale on page load
-        window.onload = applyGrayscaleEffect;
+        // Apply grayscale after delay on page load
+        window.onload = function() {
+            document.querySelector('.full-bleed-background').classList.add('initial-color');
+            applyGrayscaleEffect();
+        };
 
-        // Detect when the mouse leaves the window and revert to color
-        document.addEventListener('mouseleave', function() {
+        // Detect when the mouse leaves the window or element and revert to color (for Safari)
+        document.addEventListener('mouseleave', revertToColor);
+        document.addEventListener('mouseout', revertToColor); // Extra support for Safari
+
+        function revertToColor() {
             document.querySelector('.full-bleed-background').classList.remove('grayscale');
-            document.querySelector('.full-bleed-background').classList.add('color');
-        });
+            document.querySelector('.full-bleed-background').classList.add('color'); // Reapply color when mouse leaves
+        }
 
-        // Reapply grayscale effect when the mouse re-enters the window
+        // Reapply grayscale effect when the mouse re-enters the window or element
         document.addEventListener('mouseenter', function() {
             document.querySelector('.full-bleed-background').classList.remove('color');
             setTimeout(function() {
@@ -127,7 +138,7 @@
         // For mobile: Detect touch start to return to color
         document.addEventListener('touchstart', function() {
             document.querySelector('.full-bleed-background').classList.remove('grayscale');
-            document.querySelector('.full-bleed-background').classList.add('color');
+            document.querySelector('.full-bleed-background').classList.add('color'); // Faster return to color on touch
         });
 
         // Reapply grayscale on touch end
