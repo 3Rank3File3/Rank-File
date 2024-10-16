@@ -33,16 +33,17 @@
             background-position: center;
             background-repeat: no-repeat;
             cursor: pointer;
-            transition: filter 3s ease; /* Smooth transition for grayscale effect */
+            transition: filter 3s ease; /* Slow initial transition for grayscale effect */
         }
 
         .grayscale {
             filter: grayscale(100%);
+            transition: filter 1s ease; /* 1 second for reversion to grayscale */
         }
 
         .color {
             filter: grayscale(0); /* Fully revert to color */
-            transition: filter 1s ease; /* Smooth transition back to color */
+            transition: filter 1s ease; /* 1 second for transition back to color */
         }
     </style>
 
@@ -50,7 +51,7 @@
         function applyGrayscaleEffect() {
             setTimeout(function() {
                 document.querySelector('.full-bleed-image').classList.add('grayscale');
-            }, 1000); // Delay of 1 second
+            }, 1000); // Delay of 1 second for the initial grayscale effect
         }
 
         // Apply grayscale on page load
@@ -62,10 +63,12 @@
             document.querySelector('.full-bleed-image').classList.add('color'); // Reapply color when mouse leaves
         });
 
-        // Remove 'color' class when the mouse re-enters to allow for re-grayscale effect
+        // Reapply grayscale effect when the mouse re-enters the window
         document.addEventListener('mouseenter', function() {
             document.querySelector('.full-bleed-image').classList.remove('color');
-            applyGrayscaleEffect(); // Reapply grayscale when mouse enters the page again
+            setTimeout(function() {
+                document.querySelector('.full-bleed-image').classList.add('grayscale');
+            }, 0); // 1 second for transition back to grayscale
         });
     </script>
 </head>
