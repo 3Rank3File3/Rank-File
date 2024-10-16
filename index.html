@@ -43,7 +43,7 @@
 
         .color {
             filter: grayscale(0); /* Fully revert to color */
-            transition: filter 1s ease; /* 1 second for transition back to color */
+            transition: filter 0.5s ease; /* Faster transition back to color for mobile */
         }
     </style>
 
@@ -68,7 +68,21 @@
             document.querySelector('.full-bleed-image').classList.remove('color');
             setTimeout(function() {
                 document.querySelector('.full-bleed-image').classList.add('grayscale');
-            }, 0); // 1 second for transition back to grayscale
+            }, 0); // Reapply grayscale immediately on re-enter
+        });
+
+        // For mobile: Detect touch start to return to color
+        document.addEventListener('touchstart', function() {
+            document.querySelector('.full-bleed-image').classList.remove('grayscale');
+            document.querySelector('.full-bleed-image').classList.add('color'); // Faster return to color on touch
+        });
+
+        // Reapply grayscale on touch end
+        document.addEventListener('touchend', function() {
+            document.querySelector('.full-bleed-image').classList.remove('color');
+            setTimeout(function() {
+                document.querySelector('.full-bleed-image').classList.add('grayscale');
+            }, 500); // Quick transition back to grayscale after touch ends
         });
     </script>
 </head>
