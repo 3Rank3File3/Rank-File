@@ -29,7 +29,13 @@
             background-image: url('../media/raf7.jpg'); /* Replace with your image path */
             background-size: cover;
             background-position: center;
-            z-index: -1; /* Background behind the form */
+            background-repeat: no-repeat;
+            z-index: -1;
+            transition: filter 3s ease; /* Smooth transition for grayscale effect */
+        }
+
+        .grayscale {
+            filter: grayscale(100%); /* Apply grayscale */
         }
 
         .contact-form {
@@ -37,23 +43,19 @@
             flex-direction: column;
             gap: 15px;
             width: 100%;
-            max-width: 600px; /* Increased max-width for wider boxes */
+            max-width: 500px;
             padding: 0 10px;
-        }
-
-        .form-group {
-            margin-bottom: 15px; /* Add consistent margin across browsers */
         }
 
         .form-group input, .form-group textarea, .form-group button {
             width: 100%;
             padding: 15px;
             font-size: 16px;
-            border: 2px solid black; /* 2px black border */
-            border-radius: 0px; /* Square edges */
-            background-color: transparent; /* Transparent background */
+            border: 2px solid black;
+            border-radius: 0px;
+            background-color: transparent;
             color: black;
-            box-shadow: none; /* Remove shadow */
+            box-shadow: none;
             outline: none;
             transition: border-color 0.3s, background-color 0.3s;
         }
@@ -64,7 +66,7 @@
         }
 
         .form-group input:focus, .form-group textarea:focus, .form-group button:focus {
-            border-color: #333; /* Darker border on focus */
+            border-color: #333;
         }
 
         .form-group textarea {
@@ -79,17 +81,24 @@
         }
 
         .form-group button:hover {
-            background-color: rgba(255, 255, 255, 0.1); /* Light hover effect */
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         /* Responsive design */
         @media (max-width: 768px) {
             .contact-form {
-                padding: 0 15px; /* Ensure 15px padding on mobile */
-                max-width: calc(100% - 30px); /* Ensure boxes are wider with 15px padding on either side */
+                padding: 0 15px;
             }
         }
     </style>
+    <script>
+        // Add grayscale class after 1 second
+        window.onload = function() {
+            setTimeout(function() {
+                document.querySelector('.full-bleed-background').classList.add('grayscale');
+            }, 1000);
+        };
+    </script>
 </head>
 <body>
     <div class="full-bleed-background"></div>
