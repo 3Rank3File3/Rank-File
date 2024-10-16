@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rank+File</title>
+    
+    <!-- Favicon Setup -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'icon';
+        link.href = 'media/favicon.png'; // Path to your PNG favicon file
+        link.type = 'image/png'; // Specify the type for PNG
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    
     <style>
         body, html {
             margin: 0;
@@ -12,7 +22,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden; /* Prevents scrolling */
+            overflow: hidden;
             font-family: "Times New Roman", Times, serif;
         }
 
@@ -27,11 +37,17 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            transition: filter 3s ease; /* Smooth transition for grayscale effect */
+            transition: filter 3s ease; /* Slow initial transition for grayscale effect */
         }
 
         .grayscale {
-            filter: grayscale(100%); /* Apply grayscale */
+            filter: grayscale(100%);
+            transition: filter 1s ease;
+        }
+
+        .color {
+            filter: grayscale(0);
+            transition: filter 0.5s ease; /* Faster return to color for mobile */
         }
 
         .links {
@@ -48,14 +64,13 @@
         .link-icon {
             width: auto;
             height: 25px;
-            transition: filter 0.2s; /* Smooth transition for invert effect */
+            transition: filter 0.2s;
         }
 
         .link-icon:hover {
             filter: invert(1); /* Invert colors on hover */
         }
 
-        /* Contact Button Styles */
         .contact-button-wrapper {
             position: absolute;
             bottom: 15px;
@@ -65,33 +80,63 @@
 
         .contact-icon {
             width: auto;
-            height: 25px; /* Same size as other icons */
-            transition: filter 0.2s; /* Smooth transition for invert effect */
+            height: 25px;
+            transition: filter 0.2s;
         }
 
         .contact-icon:hover {
-            filter: invert(1); /* Invert colors on hover */
+            filter: invert(1);
         }
 
-        /* Media query for mobile devices */
         @media (max-width: 768px) {
             .links {
-                flex-direction: column; /* Stack icons vertically */
-                align-items: center; /* Center the icons */
+                flex-direction: column;
+                align-items: center;
             }
 
             .link-wrapper {
-                margin: 10px 0; /* Maintain consistent vertical spacing for mobile */
+                margin: 10px 0;
             }
         }
     </style>
+
     <script>
-        // Add grayscale class after 3 seconds
-        window.onload = function() {
+        function applyGrayscaleEffect() {
             setTimeout(function() {
                 document.querySelector('.full-bleed-background').classList.add('grayscale');
-            }, 1000);
-        };
+            }, 1000); // Delay of 1 second for the initial grayscale effect
+        }
+
+        // Apply grayscale on page load
+        window.onload = applyGrayscaleEffect;
+
+        // Detect when the mouse leaves the window and revert to color
+        document.addEventListener('mouseleave', function() {
+            document.querySelector('.full-bleed-background').classList.remove('grayscale');
+            document.querySelector('.full-bleed-background').classList.add('color');
+        });
+
+        // Reapply grayscale effect when the mouse re-enters the window
+        document.addEventListener('mouseenter', function() {
+            document.querySelector('.full-bleed-background').classList.remove('color');
+            setTimeout(function() {
+                document.querySelector('.full-bleed-background').classList.add('grayscale');
+            }, 0); // Reapply grayscale immediately on re-enter
+        });
+
+        // For mobile: Detect touch start to return to color
+        document.addEventListener('touchstart', function() {
+            document.querySelector('.full-bleed-background').classList.remove('grayscale');
+            document.querySelector('.full-bleed-background').classList.add('color');
+        });
+
+        // Reapply grayscale on touch end
+        document.addEventListener('touchend', function() {
+            document.querySelector('.full-bleed-background').classList.remove('color');
+            setTimeout(function() {
+                document.querySelector('.full-bleed-background').classList.add('grayscale');
+            }, 500); // Quick transition back to grayscale after touch ends
+        });
     </script>
 </head>
 <body>
