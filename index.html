@@ -18,13 +18,26 @@
         .full-bleed-image {
             width: 100vw;
             height: 100vh;
-            background-image: url('media/raf3.jpg');
+            background-image: url('media/raf3.jpg'); /* Replace with your image path */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             cursor: pointer;
+            transition: filter 3s ease; /* Smooth transition for grayscale effect */
+        }
+
+        .grayscale {
+            filter: grayscale(100%); /* Apply grayscale */
         }
     </style>
+    <script>
+        // Apply grayscale class after 1 second
+        window.onload = function() {
+            setTimeout(function() {
+                document.querySelector('.full-bleed-image').classList.add('grayscale');
+            }, 1000);
+        };
+    </script>
 </head>
 <body>
     <div class="full-bleed-image" onclick="location.href='c'"></div>
