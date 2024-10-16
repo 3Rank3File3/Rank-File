@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
+    <title>Contact Us</title>
     <style>
         body, html {
             margin: 0;
@@ -27,36 +27,36 @@
             z-index: -1; /* Background behind the form */
         }
 
-        .contact-form-container {
-            background: rgba(255, 255, 255, 0.9); /* Slightly transparent background for form */
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 500px;
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
             width: 100%;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .contact-form-container h2 {
-            text-align: center;
-            margin-bottom: 20px;
+            max-width: 500px;
         }
 
         .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 16px;
-            margin-bottom: 5px;
+            position: relative;
         }
 
         .form-group input, .form-group textarea {
             width: 100%;
-            padding: 10px;
-            font-size: 14px;
-            border: 1px solid #ccc;
+            padding: 15px;
+            font-size: 16px;
+            border: 2px solid black; /* Thin black border */
             border-radius: 5px;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input::placeholder, .form-group textarea::placeholder {
+            color: #aaa;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #333; /* Darker border on focus */
         }
 
         .form-group textarea {
@@ -65,50 +65,44 @@
         }
 
         .form-group button {
-            width: 100%;
-            padding: 10px;
+            padding: 15px;
             font-size: 16px;
             background-color: #333;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
 
         .form-group button:hover {
             background-color: #555;
         }
 
-        /* Responsive adjustments */
+        /* Responsive design */
         @media (max-width: 768px) {
-            .contact-form-container {
-                padding: 15px;
+            .contact-form {
+                padding: 10px;
             }
         }
     </style>
 </head>
 <body>
     <div class="full-bleed-background"></div>
-    
-    <div class="contact-form-container">
-        <h2>Contact Us</h2>
-        <form action="https://formspree.io/f/mzzbbjey" method="POST">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="message">Message...</label>
-                <textarea id="message" name="message" required></textarea>
-            </div>
-            <div class="form-group">
-                <button type="submit">Submit</button>
-            </div>
-        </form>
-    </div>
+
+    <form action="https://formspree.io/f/mzzbbjey" method="POST" class="contact-form">
+        <div class="form-group">
+            <input type="text" name="name" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+            <input type="email" name="email" placeholder="Your Email" required>
+        </div>
+        <div class="form-group">
+            <textarea name="message" placeholder="Your Message" required></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit">Send Message</button>
+        </div>
+    </form>
 </body>
 </html>
