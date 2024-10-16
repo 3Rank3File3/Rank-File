@@ -26,6 +26,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
         }
 
         .links {
@@ -46,6 +47,24 @@
         }
 
         .link-icon:hover {
+            mix-blend-mode: difference; /* Apply the difference blend mode on hover */
+        }
+
+        /* Contact Button Styles */
+        .contact-button-wrapper {
+            position: absolute;
+            bottom: 10px; /* 10px margin from the bottom */
+            left: 50%;
+            transform: translateX(-50%); /* Center the button horizontally */
+        }
+
+        .contact-icon {
+            width: auto;
+            height: 25px; /* Same size as other icons */
+            transition: mix-blend-mode 0.2s; /* Smooth transition for the blend mode */
+        }
+
+        .contact-icon:hover {
             mix-blend-mode: difference; /* Apply the difference blend mode on hover */
         }
 
@@ -80,6 +99,13 @@
                     <img src="../media/bandcamp-icon.png" alt="Bandcamp" class="link-icon">
                 </a>
             </div>
+        </div>
+
+        <!-- Contact Button -->
+        <div class="contact-button-wrapper">
+            <a href="https://rankandfile.cc/contact/" target="_self">
+                <img src="../media/contact-icon.png" alt="Contact" class="contact-icon">
+            </a>
         </div>
     </div>
 </body>
