@@ -37,8 +37,12 @@
             flex-direction: column;
             gap: 15px;
             width: 100%;
-            max-width: 500px;
-            padding: 0 10px; /* Ensure the form is centered and spaced */
+            max-width: 600px; /* Increased max-width for wider boxes */
+            padding: 0 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px; /* Add consistent margin across browsers */
         }
 
         .form-group input, .form-group textarea, .form-group button {
@@ -55,8 +59,8 @@
         }
 
         .form-group input::placeholder, .form-group textarea::placeholder {
-            color: black; /* Keep placeholder text visible */
-            opacity: 1; /* Ensure visibility of placeholder */
+            color: black;
+            opacity: 1;
         }
 
         .form-group input:focus, .form-group textarea:focus, .form-group button:focus {
@@ -69,7 +73,7 @@
         }
 
         .form-group button {
-            background-color: transparent; /* Transparent background for button */
+            background-color: transparent;
             color: black;
             cursor: pointer;
         }
@@ -81,7 +85,8 @@
         /* Responsive design */
         @media (max-width: 768px) {
             .contact-form {
-                padding: 0 15px; /* Add padding to the sides on mobile */
+                padding: 0 15px; /* Ensure 15px padding on mobile */
+                max-width: calc(100% - 30px); /* Ensure boxes are wider with 15px padding on either side */
             }
         }
     </style>
