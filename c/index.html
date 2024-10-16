@@ -27,6 +27,11 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            transition: filter 3s ease; /* Smooth transition for grayscale effect */
+        }
+
+        .grayscale {
+            filter: grayscale(100%); /* Apply grayscale */
         }
 
         .links {
@@ -53,9 +58,9 @@
         /* Contact Button Styles */
         .contact-button-wrapper {
             position: absolute;
-            bottom: 15px; /* 10px margin from the bottom */
+            bottom: 15px;
             left: 50%;
-            transform: translateX(-50%); /* Center the button horizontally */
+            transform: translateX(-50%);
         }
 
         .contact-icon {
@@ -80,6 +85,14 @@
             }
         }
     </style>
+    <script>
+        // Add grayscale class after 3 seconds
+        window.onload = function() {
+            setTimeout(function() {
+                document.querySelector('.full-bleed-background').classList.add('grayscale');
+            }, 3000); // 3 seconds delay
+        };
+    </script>
 </head>
 <body>
     <div class="full-bleed-background">
