@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
+    
+    <!-- Favicon Setup -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'icon';
+        link.href = '../media/favicon.png'; // Path to your PNG favicon file
+        link.type = 'image/png'; // Specify the type for PNG
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    
     <style>
         body, html {
             margin: 0;
@@ -14,6 +24,7 @@
             justify-content: center;
             align-items: center;
             box-sizing: border-box;
+            overflow: hidden; /* Prevent scrolling */
         }
 
         *, *::before, *::after {
@@ -35,19 +46,22 @@
         }
 
         .grayscale {
-            filter: grayscale(100%); /* Apply grayscale */
+            filter: grayscale(100%);
+            transition: filter 1s ease;
+        }
+
+        .color {
+            filter: grayscale(0);
+            transition: filter 0.5s ease; /* Faster return to color for mobile */
         }
 
         .contact-form {
             display: flex;
             flex-direction: column;
+            gap: 15px;
             width: 100%;
             max-width: 500px;
             padding: 0 10px;
-        }
-
-        .form-group {
-            margin-bottom: 15px; /* Add consistent margin to fix Safari spacing issue */
         }
 
         .form-group input, .form-group textarea, .form-group button {
@@ -87,20 +101,50 @@
             background-color: rgba(255, 255, 255, 0.1);
         }
 
-        /* Responsive design */
         @media (max-width: 768px) {
             .contact-form {
                 padding: 0 15px;
             }
         }
     </style>
+
     <script>
-        // Add grayscale class after 1 second
-        window.onload = function() {
+        function applyGrayscaleEffect() {
             setTimeout(function() {
                 document.querySelector('.full-bleed-background').classList.add('grayscale');
-            }, 1000);
-        };
+            }, 1000); // Delay of 1 second for the initial grayscale effect
+        }
+
+        // Apply grayscale on page load
+        window.onload = applyGrayscaleEffect;
+
+        // Detect when the mouse leaves the window and revert to color
+        document.addEventListener('mouseleave', function() {
+            document.querySelector('.full-bleed-background').classList.remove('grayscale');
+            document.querySelector('.full-bleed-background').classList.add('color');
+        });
+
+        // Reapply grayscale effect when the mouse re-enters the window
+        document.addEventListener('mouseenter', function() {
+            document.querySelector('.full-bleed-background').classList.remove('color');
+            setTimeout(function() {
+                document.querySelector('.full-bleed-background').classList.add('grayscale');
+            }, 0); // Reapply grayscale immediately on re-enter
+        });
+
+        // For mobile: Detect touch start to return to color
+        document.addEventListener('touchstart', function() {
+            document.querySelector('.full-bleed-background').classList.remove('grayscale');
+            document.querySelector('.full-bleed-background').classList.add('color');
+        });
+
+        // Reapply grayscale on touch end
+        document.addEventListener('touchend', function() {
+            document.querySelector('.full-bleed-background').classList.remove('color');
+            setTimeout(function() {
+                document.querySelector('.full-bleed-background').classList.add('grayscale');
+            }, 500); // Quick transition back to grayscale after touch ends
+        });
     </script>
 </head>
 <body>
