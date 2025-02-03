@@ -46,6 +46,17 @@
             transition: filter 0.5s ease; /* Faster transition back to color for mobile */
         }
 
+/* Full container centered using flexbox */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center content vertically */
+    overflow: hidden;
+}
+
 /* Updated image link container */
 .image-link-container {
     position: absolute;
@@ -58,10 +69,11 @@
     cursor: pointer;
 }
 
+/* Image adjustments */
 .image-link-container img {
     width: 100%;
     height: auto;
-    object-fit: contain; /* Maintains aspect ratio and prevents overflow */
+    object-fit: contain; /* Maintains aspect ratio */
 }
 
 /* Adjustments for large screens and landscape mode */
@@ -72,13 +84,14 @@
     }
 }
 
+/* Specific adjustments for landscape orientation */
 @media (orientation: landscape) {
-    /* Specific adjustments for landscape mode */
     .image-link-container {
         max-width: 30vw; /* Adjust to smaller width in landscape */
-        max-height: 30vh; /* Ensure it doesn't get too large vertically */
+        max-height: 30vh; /* Ensure it doesn’t get too large vertically */
     }
 }
+
     </style>
 
     <script>
