@@ -46,15 +46,15 @@
             transition: filter 0.5s ease; /* Faster transition back to color for mobile */
         }
 
-        /* New image link container */
+        /* Updated image link container */
         .image-link-container {
             position: absolute;
-            top: 10%; /* Adjust this for desired vertical position */
-            left: 10%; /* Adjust this for desired horizontal position */
-            width: 80vw; /* Relative width for responsiveness */
-            max-width: 400px; /* Max size on large screens */
-            height: auto;
-            padding: 20px; /* Add buffer around image */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: auto;
+            max-width: 80vw;
+            max-height: 80vh;
             cursor: pointer;
         }
 
@@ -62,9 +62,7 @@
             width: 100%;
             height: auto;
             object-fit: contain; /* Ensure the image maintains its aspect ratio */
-            border-radius: 10px; /* Optional: Add rounded corners for a softer look */
         }
-
     </style>
 
     <script>
@@ -113,7 +111,7 @@
     <!-- Full Bleed Background Image -->
     <div class="full-bleed-image" onclick="location.href='c'"></div>
 
-    <!-- New Image Link -->
+    <!-- Centered Image Link -->
     <div class="image-link-container" onclick="location.href='https://ra.co/events/2094946'">
         <img src="media/rf001.jpg" alt="Image Description">
     </div>
