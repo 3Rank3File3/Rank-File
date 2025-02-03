@@ -92,31 +92,6 @@
             filter: invert(1);
         }
 
-        /* New Styles for the Additional Image Link */
-        .image-link-wrapper {
-            position: absolute;
-            top: 20px; /* Buffer from the top */
-            left: 20px; /* Buffer from the left */
-            right: 20px; /* Buffer from the right */
-            bottom: 20px; /* Buffer from the bottom */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .image-link {
-            width: 100%;
-            max-width: 400px; /* Adjust based on your preference */
-            aspect-ratio: 4 / 5; /* Maintain 4:5 aspect ratio */
-            object-fit: cover; /* Ensure the image fits nicely */
-            border-radius: 10px; /* Optional: Add rounded corners */
-            transition: transform 0.3s ease; /* Optional: Add hover effect */
-        }
-
-        .image-link:hover {
-            transform: scale(1.05); /* Optional: Slight zoom on hover */
-        }
-
         @media (max-width: 768px) {
             .links {
                 flex-direction: column;
@@ -125,17 +100,6 @@
 
             .link-wrapper {
                 margin: 10px 0;
-            }
-
-            .image-link-wrapper {
-                top: 10px;
-                left: 10px;
-                right: 10px;
-                bottom: 10px;
-            }
-
-            .image-link {
-                max-width: 80%; /* Adjust for smaller screens */
             }
         }
     </style>
@@ -188,14 +152,6 @@
 </head>
 <body>
     <div class="full-bleed-background">
-        <!-- New Image Link -->
-        <div class="image-link-wrapper">
-            <a href="https://ra.co/events/2094946" target="_blank">
-                <img src="../media/rf001.jpg" alt="New Link" class="image-link">
-            </a>
-        </div>
-
-        <!-- Existing Links -->
         <div class="links">
             <div class="link-wrapper">
                 <a href="https://instagram.com/rankandfile.cc" target="_blank">
