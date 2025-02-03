@@ -46,52 +46,40 @@
             transition: filter 0.5s ease; /* Faster transition back to color for mobile */
         }
 
-/* Full container centered using flexbox */
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Center content vertically */
-    overflow: hidden;
-}
+        /* Full container centered using flexbox */
+        .image-link-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: auto;
+            max-width: 80vw; /* Ensure the image doesn’t exceed 80% of the viewport width */
+            max-height: 80vh; /* Ensure the image doesn’t exceed 80% of the viewport height */
+            cursor: pointer;
+        }
 
-/* Updated image link container */
-.image-link-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: auto;
-    max-width: 80vw; /* Ensure the image doesn’t exceed 80% of the viewport width */
-    max-height: 80vh; /* Ensure the image doesn’t exceed 80% of the viewport height */
-    cursor: pointer;
-}
+        /* Image adjustments */
+        .image-link-container img {
+            width: 100%;
+            height: auto;
+            object-fit: contain; /* Maintains aspect ratio */
+        }
 
-/* Image adjustments */
-.image-link-container img {
-    width: 100%;
-    height: auto;
-    object-fit: contain; /* Maintains aspect ratio */
-}
+        /* Adjustments for large screens and landscape mode */
+        @media (min-width: 1024px) {
+            .image-link-container {
+                max-width: 50vw; /* Reduce the max-width for larger screens */
+                max-height: 50vh; /* Also reduce max-height for larger screens */
+            }
+        }
 
-/* Adjustments for large screens and landscape mode */
-@media (min-width: 1024px) {
-    .image-link-container {
-        max-width: 50vw; /* Reduce the max-width for larger screens */
-        max-height: 50vh; /* Also reduce max-height for larger screens */
-    }
-}
-
-/* Specific adjustments for landscape orientation */
-@media (orientation: landscape) {
-    .image-link-container {
-        max-width: 30vw; /* Adjust to smaller width in landscape */
-        max-height: 30vh; /* Ensure it doesn’t get too large vertically */
-    }
-}
-
+        /* Specific adjustments for landscape orientation */
+        @media (orientation: landscape) {
+            .image-link-container {
+                max-width: 40vw; /* Adjust to smaller width in landscape */
+                max-height: 40vh; /* Ensure it doesn’t get too large vertically */
+            }
+        }
     </style>
 
     <script>
