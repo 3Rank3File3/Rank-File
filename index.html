@@ -93,7 +93,10 @@
         }
 
         // Apply grayscale on page load
-        window.onload = applyGrayscaleEffect;
+        window.onload = function() {
+            applyGrayscaleEffect();
+            changeImage(); // Change image on page load
+        };
 
         // Detect when the mouse leaves the window or element and revert to color
         document.addEventListener('mouseleave', revertToColor);
@@ -125,15 +128,33 @@
                 document.querySelector('.full-bleed-image').classList.add('grayscale');
             }, 500); // Quick transition back to grayscale after touch ends
         });
+
+        // Change the image randomly on page load
+        function changeImage() {
+            var images = [
+                'media/rf001.jpg',
+                'media/rf002.jpg',
+                'media/rf003.jpg',
+                'media/rf004.jpg',
+                'media/rf005.jpg',
+                'media/rf006.jpg',
+                'media/rf007.jpg',
+                'media/rf008.jpg',
+                'media/rf009.jpg',
+                'media/rf010.jpg',
+                'media/rf011.jpg',
+                'media/rf012.jpg',
+            ];
+
+            // Get a random index from the array
+            var randomImage = images[Math.floor(Math.random() * images.length)];
+            document.querySelector('.image-link-container img').src = randomImage;
+        }
     </script>
 </head>
 <body>
     <!-- Full Bleed Background Image -->
     <div class="full-bleed-image" onclick="location.href='c'"></div>
-
-    <!-- Centered Image Link -->
-    <div class="image-link-container" onclick="location.href='https://ra.co/events/2094946'">
-        <img src="media/rf001.jpg" alt="Image Description">
     </div>
 </body>
 </html>
