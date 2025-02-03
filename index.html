@@ -52,53 +52,40 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: auto;
-            max-width: 60vw; /* Ensure the image doesn’t exceed 80% of the viewport width */
-            max-height: 60vh; /* Ensure the image doesn’t exceed 80% of the viewport height */
+            width: 45vw; /* Increased size by 50% */
+            height: 45vh; /* Increased size by 50% */
+            max-width: 45vw; /* Limit the size to 45vw */
+            max-height: 45vh; /* Limit the size to 45vh */
             cursor: pointer;
         }
 
         /* Image adjustments */
         .image-link-container img {
             width: 100%;
-            height: auto;
+            height: 100%;
             object-fit: contain; /* Maintains aspect ratio */
         }
 
         /* Adjustments for large screens and landscape mode */
         @media (min-width: 1024px) {
             .image-link-container {
-                max-width: 60vw; /* Reduce the max-width for larger screens */
-                max-height: 60vh; /* Also reduce max-height for larger screens */
+                width: 45vw; /* Increased size by 50% */
+                height: 45vh; /* Increased size by 50% */
+                max-width: 45vw; /* Ensure no image gets too big */
+                max-height: 45vh; /* Ensure no image gets too big */
             }
         }
 
         /* Specific adjustments for landscape orientation */
         @media (orientation: landscape) {
             .image-link-container {
-                max-width: 60vw; /* Adjust to smaller width in landscape */
-                max-height: 60vh; /* Ensure it doesn’t get too large vertically */
+                width: 45vw; /* Increased size by 50% */
+                height: 45vh; /* Increased size by 50% */
             }
         }
     </style>
 
     <script>
-        // List of alternate image sources
-        const imageSources = [
-            'media/rf001.jpg',  // Image 1
-            'media/rf002.jpg',  // Image 2
-            'media/rf003.jpg',  // Image 3
-            'media/rf004.jpg'   // Image 4 (add as many as needed)
-        ];
-
-        // Function to randomize image
-        function randomizeImage() {
-            const randomIndex = Math.floor(Math.random() * imageSources.length);
-            const randomImage = imageSources[randomIndex];
-            document.querySelector('.image-link-container img').src = randomImage;
-        }
-
-        // Apply grayscale effect
         function applyGrayscaleEffect() {
             setTimeout(function() {
                 document.querySelector('.full-bleed-image').classList.add('grayscale');
@@ -106,10 +93,7 @@
         }
 
         // Apply grayscale on page load
-        window.onload = function() {
-            randomizeImage(); // Call randomizeImage on load
-            applyGrayscaleEffect(); // Call grayscale effect
-        };
+        window.onload = applyGrayscaleEffect;
 
         // Detect when the mouse leaves the window or element and revert to color
         document.addEventListener('mouseleave', revertToColor);
