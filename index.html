@@ -52,85 +52,38 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: auto;
-            max-width: 80vw; /* Ensure the image doesn’t exceed 80% of the viewport width */
-            max-height: 80vh; /* Ensure the image doesn’t exceed 80% of the viewport height */
+            width: 30vw; /* Set to 30vw */
+            height: 30vh; /* Set to 30vh */
+            max-width: 30vw; /* Limit the size to 30vw */
+            max-height: 30vh; /* Limit the size to 30vh */
             cursor: pointer;
         }
 
         /* Image adjustments */
         .image-link-container img {
             width: 100%;
-            height: auto;
+            height: 100%;
             object-fit: contain; /* Maintains aspect ratio */
         }
 
         /* Adjustments for large screens and landscape mode */
         @media (min-width: 1024px) {
             .image-link-container {
-                max-width: 50vw; /* Reduce the max-width for larger screens */
-                max-height: 50vh; /* Also reduce max-height for larger screens */
+                width: 30vw; /* Ensure image size is consistent */
+                height: 30vh; /* Adjust to 30vh */
+                max-width: 30vw; /* Ensure no image gets too big */
+                max-height: 30vh; /* Ensure no image gets too big */
             }
         }
 
         /* Specific adjustments for landscape orientation */
         @media (orientation: landscape) {
             .image-link-container {
-                max-width: 30vw; /* Adjust to smaller width in landscape */
-                max-height: 30vh; /* Ensure it doesn’t get too large vertically */
+                width: 30vw; /* Ensures image size stays at 30vw */
+                height: 30vh; /* Ensures image size stays at 30vh */
             }
         }
     </style>
 
     <script>
-        function applyGrayscaleEffect() {
-            setTimeout(function() {
-                document.querySelector('.full-bleed-image').classList.add('grayscale');
-            }, 2000); // Delay of 2 seconds for the initial grayscale effect
-        }
-
-        // Apply grayscale on page load
-        window.onload = applyGrayscaleEffect;
-
-        // Detect when the mouse leaves the window or element and revert to color
-        document.addEventListener('mouseleave', revertToColor);
-        document.addEventListener('mouseout', revertToColor); // Extra support for Safari
-
-        function revertToColor() {
-            document.querySelector('.full-bleed-image').classList.remove('grayscale');
-            document.querySelector('.full-bleed-image').classList.add('color'); // Reapply color when mouse leaves
-        }
-
-        // Reapply grayscale effect when the mouse re-enters the window or element
-        document.addEventListener('mouseenter', function() {
-            document.querySelector('.full-bleed-image').classList.remove('color');
-            setTimeout(function() {
-                document.querySelector('.full-bleed-image').classList.add('grayscale');
-            }, 0); // Reapply grayscale immediately on re-enter
-        });
-
-        // For mobile: Detect touch start to return to color
-        document.addEventListener('touchstart', function() {
-            document.querySelector('.full-bleed-image').classList.remove('grayscale');
-            document.querySelector('.full-bleed-image').classList.add('color'); // Faster return to color on touch
-        });
-
-        // Reapply grayscale on touch end
-        document.addEventListener('touchend', function() {
-            document.querySelector('.full-bleed-image').classList.remove('color');
-            setTimeout(function() {
-                document.querySelector('.full-bleed-image').classList.add('grayscale');
-            }, 500); // Quick transition back to grayscale after touch ends
-        });
-    </script>
-</head>
-<body>
-    <!-- Full Bleed Background Image -->
-    <div class="full-bleed-image" onclick="location.href='c'"></div>
-
-    <!-- Centered Image Link -->
-    <div class="image-link-container" onclick="location.href='https://ra.co/events/2094946'">
-        <img src="media/rf001.jpg" alt="Image Description">
-    </div>
-</body>
-</html>
+        function applyGrayscaleEffect()
