@@ -52,10 +52,10 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 30vw; /* Set to 30vw */
-            height: 30vh; /* Set to 30vh */
-            max-width: 30vw; /* Limit the size to 30vw */
-            max-height: 30vh; /* Limit the size to 30vh */
+            width: 60vw; /* Increased size by 50% */
+            height: 60vh; /* Increased size by 50% */
+            max-width: 60vw; /* Limit the size to 45vw */
+            max-height: 60vh; /* Limit the size to 45vh */
             cursor: pointer;
         }
 
@@ -69,18 +69,18 @@
         /* Adjustments for large screens and landscape mode */
         @media (min-width: 1024px) {
             .image-link-container {
-                width: 30vw; /* Ensure image size is consistent */
-                height: 30vh; /* Adjust to 30vh */
-                max-width: 30vw; /* Ensure no image gets too big */
-                max-height: 30vh; /* Ensure no image gets too big */
+                width: 60vw; /* Increased size by 50% */
+                height: 60vh; /* Increased size by 50% */
+                max-width: 60vw; /* Ensure no image gets too big */
+                max-height: 60vh; /* Ensure no image gets too big */
             }
         }
 
         /* Specific adjustments for landscape orientation */
         @media (orientation: landscape) {
             .image-link-container {
-                width: 30vw; /* Ensures image size stays at 30vw */
-                height: 30vh; /* Ensures image size stays at 30vh */
+                width: 45vw; /* Increased size by 50% */
+                height: 45vh; /* Increased size by 50% */
             }
         }
     </style>
