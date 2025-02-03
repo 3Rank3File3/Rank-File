@@ -63,6 +63,13 @@
             height: auto;
             object-fit: contain; /* Ensure the image maintains its aspect ratio */
         }
+
+        @media (min-width: 1024px) {
+            .image-link-container {
+                max-width: 40vw; /* Reduce size for larger screens */
+                max-height: 40vh;
+            }
+        }
     </style>
 
     <script>
